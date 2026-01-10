@@ -1,0 +1,14 @@
+.dashboard-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dashboard-page h1 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.dashboard-loading {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-light);
+}

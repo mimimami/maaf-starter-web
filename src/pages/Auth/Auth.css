@@ -1,0 +1,27 @@
+.auth-page {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.auth-card {
+  margin-top: var(--spacing-xl);
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.auth-error {
+  padding: var(--spacing-sm);
+  background-color: #fee2e2;
+  color: var(--color-danger);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: var(--spacing-sm);
+}

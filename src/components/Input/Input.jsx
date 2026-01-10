@@ -1,0 +1,43 @@
+import './Input.css'
+
+function Input({
+  label,
+  type = 'text',
+  name,
+  value,
+  onChange,
+  placeholder,
+  error,
+  required = false,
+  disabled = false,
+  className = '',
+  ...props
+}) {
+  const inputId = `input-${name}`
+
+  return (
+    <div className={`input-group ${className}`}>
+      {label && (
+        <label htmlFor={inputId} className="input-label">
+          {label}
+          {required && <span className="input-required">*</span>}
+        </label>
+      )}
+      <input
+        id={inputId}
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        required={required}
+        disabled={disabled}
+        className={`input ${error ? 'input-error' : ''}`}
+        {...props}
+      />
+      {error && <span className="input-error-message">{error}</span>}
+    </div>
+  )
+}
+
+export default Input
