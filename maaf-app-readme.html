@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>maaf-app - MAAF Framework</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #667eea;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    h2 {
+      color: #374151;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      color: #4b5563;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+    ul, ol {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    a {
+      color: #667eea;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1rem;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link">← Vissza a főoldalra</a>
+    <h1>MAAF App</h1>
+
+<p>A fresh MAAF application skeleton with interactive installer.</p>
+
+<h2>Telepítés</h2>
+
+<pre><code>composer create-project maaf/app my-app
+</code></pre>
+
+<h3>Mi történik a telepítés során?</h3>
+
+<ul><li>✅ <strong>Letölti a keretrendszert</strong> (<code>maaf/core</code> és függőségei)</li>
+<li>✅ <strong>Felrakja a vendor csomagokat</strong> (automatikusan)</li>
+<li>✅ <strong>Interaktív installer elindul</strong> és kérdéseket tesz fel:</li>
+</ul>   - 📊 Adatbázis típus (SQLite, MySQL, PostgreSQL)
+   - 🎨 Frontend framework (React, Vue, Vanilla JS, vagy nincs)
+   - 🔐 JWT Secret kulcs (vagy automatikus generálás)
+   - 🌍 Környezeti változók (APP_ENV, APP_DEBUG)
+   - ⚙️ További beállítások (példa modul, Git inicializálás)
+<ul><li>✅ <strong>Létrehozza a <code>.env</code> fájlt</strong> a válaszok alapján</li>
+<li>✅ <strong>Generál JWT secret kulcsot</strong> (ha üresen hagytad)</li>
+<li>✅ <strong>Konfigurálja az adatbázist</strong> (<code>config/database.php</code>)</li>
+<li>✅ <strong>Frissíti a szolgáltatásokat</strong> (<code>config/services.php</code>)</li>
+<li>✅ <strong>Validálja a konfigurációt</strong> (JWT Secret hossz, adatbázis beállítások)</li>
+<li>✅ <strong>Teszteli az adatbázis kapcsolatot</strong></li>
+<li>✅ <strong>Inicializálja a frontend-et</strong> (ha választottál)</li>
+<li>✅ <strong>Inicializálja a Git repository-t</strong> (ha kérted)</li>
+</ul>
+Lásd: <a href="INSTALLATION.md">INSTALLATION.md</a> részletes leírásért.
+
+<h2>Struktúra</h2>
+
+<pre><code>my-app/
+├── composer.json
+├── config/
+│   ├── services.php
+│   ├── routes.php
+│   └── database.php (generált)
+├── public/
+│   └── index.php
+├── .env (generált)
+└── src/
+    └── Modules/
+        └── Example/ (opcionális)
+</code></pre>
+
+<h2>Használat</h2>
+
+<ul><li>Telepítsd a package-et: <code>composer create-project maaf/app my-app</code></li>
+<li>Válaszolj az installer kérdéseire</li>
+<li>Indítsd el a webszervert:</li>
+</ul>   <pre><code>   cd my-app
+   php maaf serve
+   </code></pre>
+   Vagy manuálisan:
+   <pre><code>   cd my-app/public
+   php -S localhost:8000
+   </code></pre>
+<ul><li>Nyisd meg a böngészőben: http://localhost:8000</li>
+</ul>   - 🎨 Szép welcome oldal jelenik meg
+   - 📊 Health check: http://localhost:8000/health
+   - 📚 API docs: http://localhost:8000/api-docs
+
+<h2>Dokumentáció</h2>
+
+<h3>Alapvető Dokumentáció</h3>
+
+<ul><li><a href="INSTALLATION.md">Telepítési Útmutató</a> - Részletes telepítési lépések</li>
+<li><a href="https://github.com/mimimami/maaf-core">MAAF Core Dokumentáció</a> - Framework dokumentáció</li>
+</ul>
+<h3>Fejlesztési Útmutatók</h3>
+
+<ul><li><a href="docs/FRONTEND_INTEGRATION.md">Frontend Integráció</a> - React, Vue, Vanilla JS integráció</li>
+<li><a href="docs/DEPLOYMENT.md">Deployment Útmutató</a> - Docker, VPS, Cloud deploy</li>
+<li><a href="docs/BEST_PRACTICES.md">Best Practices</a> - Ajánlott fejlesztési gyakorlatok</li>
+<li><a href="docs/CLI_COMMANDS.md">CLI Parancsok</a> - MAAF CLI tool használata</li>
+<li><a href="docs/GITHUB_ACTIONS.md">GitHub Actions CI/CD</a> - Automatizált tesztelés és deploy</li>
+</ul>
+<h2>Következő Lépések</h2>
+
+<ul><li>Hozz létre saját modulokat a <code>src/Modules/</code> könyvtárban</li>
+<li>Regisztráld a szolgáltatásokat a <code>config/services.php</code> fájlban</li>
+<li>Regisztráld a route-okat a modulok <code>Module.php</code> fájljában</li>
+</ul>
+<h2>Példa Modul</h2>
+
+<p>A package tartalmaz egy példa modult (<code>Example</code>), amely bemutatja, hogyan kell modult létrehozni. Az installer megkérdezi, hogy szeretnéd-e megtartani.</p>
+  </div>
+</body>
+</html>

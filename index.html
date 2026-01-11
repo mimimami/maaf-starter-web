@@ -4,10 +4,533 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MAAF Starter Web</title>
+    <title>MAAF Framework - Moduláris Alkalmazás Architektúra Framework</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #1f2937;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 2rem 1rem;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+      }
+      
+      header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid #e5e7eb;
+      }
+      
+      h1 {
+        font-size: 3rem;
+        color: #667eea;
+        margin-bottom: 0.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.25rem;
+        color: #6b7280;
+      }
+      
+      section {
+        margin-bottom: 3rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+        color: #374151;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e5e7eb;
+      }
+      
+      h3 {
+        font-size: 1.5rem;
+        color: #4b5563;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+      
+      .package-card {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        transition: all 0.2s;
+      }
+      
+      .package-card:hover {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      .package-name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #667eea;
+        margin-bottom: 0.75rem;
+      }
+      
+      .package-description {
+        color: #6b7280;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      
+      .package-features {
+        list-style: none;
+        margin-bottom: 1rem;
+      }
+      
+      .package-features li {
+        color: #4b5563;
+        padding: 0.25rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+      
+      .package-features li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+      }
+      
+      .package-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .link {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: background 0.2s;
+      }
+      
+      .link:hover {
+        background: #5568d3;
+      }
+      
+      .link-secondary {
+        background: #6b7280;
+      }
+      
+      .link-secondary:hover {
+        background: #4b5563;
+      }
+      
+      .core-app {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+      
+      .intro {
+        background: #f0f9ff;
+        border-left: 4px solid #667eea;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 0.5rem;
+      }
+      
+      .intro p {
+        color: #1e40af;
+        line-height: 1.6;
+      }
+      
+      footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 2px solid #e5e7eb;
+        color: #6b7280;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div class="container">
+      <header>
+        <h1>MAAF Framework</h1>
+        <p class="subtitle">Moduláris Alkalmazás Architektúra Framework</p>
+      </header>
+
+      <div class="intro">
+        <p>
+          A MAAF egy teljes körű PHP framework moduláris architektúrával, amely lehetővé teszi 
+          a gyors és rugalmas alkalmazásfejlesztést. Minden komponens önálló package-ként érhető el, 
+          így csak azt használhatod, amire szükséged van.
+        </p>
+      </div>
+
+      <section>
+        <h2>Core & App</h2>
+        <div class="core-app">
+          <div class="package-card">
+            <div class="package-name">maaf/core</div>
+            <div class="package-description">
+              A MAAF framework alapvető komponensei: DI Container, HTTP Kernel, Router, EventBus, Config Engine és CLI.
+            </div>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-core" class="link" target="_blank">GitHub</a>
+              <a href="maaf-core-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/app</div>
+            <div class="package-description">
+              Példa alkalmazás a MAAF framework használatára, amely bemutatja az összes alapvető funkciót.
+            </div>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-app" class="link" target="_blank">GitHub</a>
+              <a href="maaf-app-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Csomagok</h2>
+
+        <h3>1. Alap platformcsomagok (core ecosystem)</h3>
+        <div class="package-grid">
+          <div class="package-card">
+            <div class="package-name">maaf/auth</div>
+            <div class="package-description">Moduláris autentikációs rendszer</div>
+            <ul class="package-features">
+              <li>moduláris auth (session + token + tenant aware)</li>
+              <li>plug in elhető provider logika</li>
+              <li>fejlesztőbarát middleware ek</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-auth" class="link" target="_blank">GitHub</a>
+              <a href="maaf-auth-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/tenant</div>
+            <div class="package-description">Multi-tenant támogatás</div>
+            <ul class="package-features">
+              <li>tenant aware routing, model resolution, config override</li>
+              <li>multi tenant cache és queue izoláció</li>
+              <li>domain alapú és paraméter alapú tenant felismerés</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-tenant" class="link" target="_blank">GitHub</a>
+              <a href="maaf-tenant-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/module</div>
+            <div class="package-description">Modul rendszer</div>
+            <ul class="package-features">
+              <li>modulok regisztrációja, lifecycle hookok</li>
+              <li>modulonkénti route, config, migration, asset kezelés</li>
+              <li>CLI generátorok</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-module" class="link" target="_blank">GitHub</a>
+              <a href="maaf-module-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/config</div>
+            <div class="package-description">Konfiguráció kezelés</div>
+            <ul class="package-features">
+              <li>környezetfüggetlen, rétegezett konfiguráció</li>
+              <li>override olható modulonként</li>
+              <li>auditálható változások</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-config" class="link" target="_blank">GitHub</a>
+              <a href="maaf-config-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+        </div>
+
+        <h3>2. Teljesítmény és infrastruktúra</h3>
+        <div class="package-grid">
+          <div class="package-card">
+            <div class="package-name">maaf/runtime</div>
+            <div class="package-description">Runtime és worker kezelés</div>
+            <ul class="package-features">
+              <li>worker alapú futtatás (Octane szerű, de MAAF filozófiával)</li>
+              <li>cache elt bootstrap</li>
+              <li>modul szintű preload</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-runtime" class="link" target="_blank">GitHub</a>
+              <a href="maaf-runtime-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/queue</div>
+            <div class="package-description">Queue rendszer</div>
+            <ul class="package-features">
+              <li>queue driver absztrakció</li>
+              <li>modulonkénti worker konfiguráció</li>
+              <li>dashboard (Horizon szerű)</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-queue" class="link" target="_blank">GitHub</a>
+              <a href="maaf-queue-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/monitor</div>
+            <div class="package-description">Monitoring és profiling</div>
+            <ul class="package-features">
+              <li>teljesítményprofilozás</li>
+              <li>modulonkénti metrikák</li>
+              <li>valós idejű diagnosztika (Pulse szerű)</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-monitor" class="link" target="_blank">GitHub</a>
+              <a href="maaf-monitor-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+        </div>
+
+        <h3>3. Adatkezelés és keresés</h3>
+        <div class="package-grid">
+          <div class="package-card">
+            <div class="package-name">maaf/search</div>
+            <div class="package-description">Search engine integráció</div>
+            <ul class="package-features">
+              <li>moduláris indexelés</li>
+              <li>adapterek: Meilisearch, Elasticsearch, SQL fulltext</li>
+              <li>model független keresési pipeline</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-search" class="link" target="_blank">GitHub</a>
+              <a href="maaf-search-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/storage</div>
+            <div class="package-description">File storage és CDN</div>
+            <ul class="package-features">
+              <li>fájlkezelés, asset pipeline</li>
+              <li>CDN integráció</li>
+              <li>modulonkénti storage namespace</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-storage" class="link" target="_blank">GitHub</a>
+              <a href="maaf-storage-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+        </div>
+
+        <h3>4. Jogosultság, feature flag, workflow</h3>
+        <div class="package-grid">
+          <div class="package-card">
+            <div class="package-name">maaf/permissions</div>
+            <div class="package-description">Jogosultság kezelés</div>
+            <ul class="package-features">
+              <li>role based + policy based + rule based</li>
+              <li>modulonkénti jogosultságregisztráció</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-permissions" class="link" target="_blank">GitHub</a>
+              <a href="maaf-permissions-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/flags</div>
+            <div class="package-description">Feature flags</div>
+            <ul class="package-features">
+              <li>feature flag rendszer (Pennant szerű)</li>
+              <li>rollout stratégiák</li>
+              <li>user szintű és tenant szintű engedélyezés</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-flags" class="link" target="_blank">GitHub</a>
+              <a href="maaf-flags-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/workflow</div>
+            <div class="package-description">Workflow és state machines</div>
+            <ul class="package-features">
+              <li>állapotgépek</li>
+              <li>tranzakciós workflow k</li>
+              <li>audit log</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-workflow" class="link" target="_blank">GitHub</a>
+              <a href="maaf-workflow-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+        </div>
+
+        <h3>5. Fizetés és integrációk</h3>
+        <div class="package-grid">
+          <div class="package-card">
+            <div class="package-name">maaf/billing</div>
+            <div class="package-description">Billing és payment</div>
+            <ul class="package-features">
+              <li>Stripe + PayPal + Barion adapterek</li>
+              <li>előfizetéskezelés</li>
+              <li>számlázási logika modulárisan</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-billing" class="link" target="_blank">GitHub</a>
+              <a href="maaf-billing-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/social</div>
+            <div class="package-description">Social login</div>
+            <ul class="package-features">
+              <li>OAuth provider modulok</li>
+              <li>social login + social account linking</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-social" class="link" target="_blank">GitHub</a>
+              <a href="maaf-social-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+        </div>
+
+        <h3>6. Fejlesztői élmény (DX)</h3>
+        <div class="package-grid">
+          <div class="package-card">
+            <div class="package-name">maaf/devtools</div>
+            <div class="package-description">DevTools és debugging</div>
+            <ul class="package-features">
+              <li>request inspector (Telescope szerű)</li>
+              <li>modulonkénti lognézet</li>
+              <li>query profiler</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-devtools" class="link" target="_blank">GitHub</a>
+              <a href="maaf-devtools-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/testing</div>
+            <div class="package-description">Testing toolkit</div>
+            <ul class="package-features">
+              <li>integrációs teszt helper</li>
+              <li>modul sandbox környezet</li>
+              <li>böngészőteszt wrapper (Dusk szerű)</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-testing" class="link" target="_blank">GitHub</a>
+              <a href="maaf-testing-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/style</div>
+            <div class="package-description">Code style és generátorok</div>
+            <ul class="package-features">
+              <li>kódstílus + generátorok</li>
+              <li>modul skeleton generálás</li>
+              <li>Pint szerű formatter</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-style" class="link" target="_blank">GitHub</a>
+              <a href="maaf-style-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+        </div>
+
+        <h3>7. Starter kitek</h3>
+        <div class="package-grid">
+          <div class="package-card">
+            <div class="package-name">maaf/starter-api</div>
+            <div class="package-description">API-first projekt skeleton</div>
+            <ul class="package-features">
+              <li>API first projekt skeleton</li>
+              <li>auth + tenant + modulok előkészítve</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-starter-api" class="link" target="_blank">GitHub</a>
+              <a href="maaf-starter-api-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/starter-web</div>
+            <div class="package-description">React/Vite frontend skeleton</div>
+            <ul class="package-features">
+              <li>React/Vite alapú frontend skeleton</li>
+              <li>moduláris UI komponensek</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-starter-web" class="link" target="_blank">GitHub</a>
+              <a href="maaf-starter-web-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="package-name">maaf/starter-admin</div>
+            <div class="package-description">Admin panel skeleton</div>
+            <ul class="package-features">
+              <li>admin panel alapok</li>
+              <li>modulonkénti CRUD generátor</li>
+            </ul>
+            <div class="package-links">
+              <a href="https://github.com/mimimami/maaf-starter-admin" class="link" target="_blank">GitHub</a>
+              <a href="maaf-starter-admin-readme.html" class="link link-secondary">README</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>&copy; 2024 MAAF Framework - Moduláris Alkalmazás Architektúra Framework</p>
+        <p style="margin-top: 0.5rem;">
+          <a href="https://github.com/mimimami" style="color: #667eea; text-decoration: none;">GitHub</a>
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
